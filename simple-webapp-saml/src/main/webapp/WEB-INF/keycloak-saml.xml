@@ -1,0 +1,33 @@
+<secure-deployment name="simple-webapp-saml.war">
+    <SP entityID="simple-webapp-saml"
+        sslPolicy="EXTERNAL"
+	logoutPage="/simple-webapp-saml">
+        <Keys>
+            <Key signing="true">
+		<KeyStore password="password" file="/etc/keycloak-saml-secret-volume/keystore.jks">
+                <PrivateKey alias="simple-webapp-saml" password="password"/>
+                <CertificatePem>
+                    MIICszCCAZsCBgGLr25xBzANBgkqhkiG9w0BAQsFADAdMRswGQYDVQQDDBJzaW1wbGUtd2ViYXBwLXNhbWwwHhcNMjMxMTA4MTQ1MzUyWhcNMzMxMTA4MTQ1NTMyWjAdMRswGQYDVQQDDBJzaW1wbGUtd2ViYXBwLXNhbWwwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDp++LvR+HpOlLAihFXU24y0ckLOar25FovpYL0PxzFSUSp3w6G6akUgPJU587pzRZGQFlvreiEI1WmMS/eTBgehIfJiEQYUVpdlfGDRbjiRo8Hea/tkuZBNdvZNk32CGw/Jqm2uyQHdPcP8D2/PsNVxjG64bnCQ/PdsEfGqmWa38oo2V8Jmi5V1txi1aN39/VOq/4jBGxNCxjSaOCsU+MIhfbbOu/UKmA4fdshJOl8Whn7lVt3SrDyJv0RanzSL0ZfmoabyHjkCkrdKUdP3I4rj7gb4obZ+B4KxdKNtrRAjfU9SahGR2V528r/ZOIdFS+fozhrxLFi8h4Vj8Q6fNvnAgMBAAEwDQYJKoZIhvcNAQELBQADggEBAFcJPhyt7UAiub+ufEomIfYProwNPFzPQ9awAVBsjHDTJzIgQCoPpMA0qln2cnIQPO6E/1ApQjNyfEHd+aU0NfkINcgFlMhSUqqeQChi26A1jCIOGXf/N4hfxB22QjpSG3+O17bcigZFAJlvWSdWidUVuj+YigVpVc3PagpL9DlQSoEfNqBh8EicsT49LsFVHh2j3RiMX9i7QbD3nMee6LFDbX/sNuJmwV6mNwzgN0nR2fjuhcKZdlFFsYV0w/zcJt8KOhBZyz+rircoAFjwf+U+cXtQcYBhHKrEYl+LMM9cDZZTtIwHD6B/zOgBVVuwz6asCG6uAxKXD2bgBU2PXOM=
+	        </CertificatePem>
+	        <Certificate alias="myrealm"/>
+            </Key>
+        </Keys>
+        <IDP entityID="idp"
+             signatureAlgorithm="RSA_SHA256"
+             signatureCanonicalizationMethod="http://www.w3.org/2001/10/xml-exc-c14n#">
+            <SingleSignOnService signRequest="true"
+                                 validateResponseSignature="true"
+                                 validateAssertionSignature="false"
+                                 requestBinding="POST"
+                                 bindingUrl="https://keycloak-saml-client.apps-crc.testing/realms/myrealm/protocol/saml"/>
+            <SingleLogoutService signRequest="true"
+                                 signResponse="true"
+                                 validateRequestSignature="true"
+                                 validateResponseSignature="true"
+                                 requestBinding="POST"
+                                 responseBinding="POST"
+                                 postBindingUrl="https://keycloak-saml-client.apps-crc.testing/realms/myrealm/protocol/saml"
+                                 redirectBindingUrl="https://keycloak-saml-client.apps-crc.testing/realms/myrealm/protocol/saml"/>
+        </IDP>
+    </SP>
+</secure-deployment>
