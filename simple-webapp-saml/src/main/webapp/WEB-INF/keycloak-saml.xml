@@ -1,15 +1,16 @@
-<secure-deployment name="simple-webapp-saml.war">
+<keycloak-saml-adapter>
     <SP entityID="simple-webapp-saml"
         sslPolicy="EXTERNAL"
-	logoutPage="/simple-webapp-saml">
+        logoutPage="/simple-webapp-saml">
         <Keys>
             <Key signing="true">
 		<KeyStore password="password" file="/etc/keycloak-saml-secret-volume/keystore.jks">
-                <PrivateKey alias="simple-webapp-saml" password="password"/>
+                  <PrivateKey alias="simple-webapp-saml" password="password"/>
                 <CertificatePem>
-                    MIICszCCAZsCBgGLr25xBzANBgkqhkiG9w0BAQsFADAdMRswGQYDVQQDDBJzaW1wbGUtd2ViYXBwLXNhbWwwHhcNMjMxMTA4MTQ1MzUyWhcNMzMxMTA4MTQ1NTMyWjAdMRswGQYDVQQDDBJzaW1wbGUtd2ViYXBwLXNhbWwwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDp++LvR+HpOlLAihFXU24y0ckLOar25FovpYL0PxzFSUSp3w6G6akUgPJU587pzRZGQFlvreiEI1WmMS/eTBgehIfJiEQYUVpdlfGDRbjiRo8Hea/tkuZBNdvZNk32CGw/Jqm2uyQHdPcP8D2/PsNVxjG64bnCQ/PdsEfGqmWa38oo2V8Jmi5V1txi1aN39/VOq/4jBGxNCxjSaOCsU+MIhfbbOu/UKmA4fdshJOl8Whn7lVt3SrDyJv0RanzSL0ZfmoabyHjkCkrdKUdP3I4rj7gb4obZ+B4KxdKNtrRAjfU9SahGR2V528r/ZOIdFS+fozhrxLFi8h4Vj8Q6fNvnAgMBAAEwDQYJKoZIhvcNAQELBQADggEBAFcJPhyt7UAiub+ufEomIfYProwNPFzPQ9awAVBsjHDTJzIgQCoPpMA0qln2cnIQPO6E/1ApQjNyfEHd+aU0NfkINcgFlMhSUqqeQChi26A1jCIOGXf/N4hfxB22QjpSG3+O17bcigZFAJlvWSdWidUVuj+YigVpVc3PagpL9DlQSoEfNqBh8EicsT49LsFVHh2j3RiMX9i7QbD3nMee6LFDbX/sNuJmwV6mNwzgN0nR2fjuhcKZdlFFsYV0w/zcJt8KOhBZyz+rircoAFjwf+U+cXtQcYBhHKrEYl+LMM9cDZZTtIwHD6B/zOgBVVuwz6asCG6uAxKXD2bgBU2PXOM=
-	        </CertificatePem>
-	        <Certificate alias="myrealm"/>
+                    MIICszCCAZsCBgGLyPQY0TANBgkqhkiG9w0BAQsFADAdMRswGQYDVQQDDBJzaW1wbGUtd2ViYXBwLXNhbWwwHhcNMjMxMTEzMTM1MDIyWhcNMzMxMTEzMTM1MjAyWjAdMRswGQYDVQQDDBJzaW1wbGUtd2ViYXBwLXNhbWwwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDai3jxEPXKyAm/WJ+SJwy8okdVobYpX9jY17rEYJVBL5MX4cSuCSfRBz5d1UrPVTJ6/3g9a4RUhq7rWNBwFGeBEvl2iZYjGidKT/NLnl4zdhAZGDkTqoneqZFeIDIs06XleXHWQv7pH4wrICh8oEpUQEUMx/4dmj2XCznfRo+RltmkhXuhrAKENzNWnAYDXSAKlvddFPQojHbs3ZcDxMfzTkS7w0C6FeHvAidssp3bGuxg02+cuLQU6CvS5VBIzry735S933EOvv/fqRwmCjRTLkI23zkiSJgIm0aLK4AJbZeSmPGS9mIDRDkPZup9ViV5RC1dJWgMtu2TyEHgSK1pAgMBAAEwDQYJKoZIhvcNAQELBQADggEBAHqI0DEwjNRNqRPUmP4IDtIUWpKus4wi59jbIIJtiBQIRNru7A7yloMNBH0p/GpnPO7pslojUqy6JnhdXAnmkSq2n3z2JCOqGUno7uoi09pN4Rra2pXlC+8hZPSWQg/bE9VMBUe64t027QFaicsXb6xU0gpItp/lepqwmIZbZq+S7tdVsBjO7USpkHjK3JUxCEzEKzqWjwScEZO3CxWaoAROkXQ0jSMDEahn6KUGV9RDLgmWkqxLQCQO5HcWU465EHQL+VdLrSb2PEJTQDKNmdCqg+dbdR/OYm+liIdafkl/keyrcrFD6HtiorKIo61enFAwJLEEbrwmxiPppgQxskk=
+	    </CertificEatePem>
+	      <Certificate alias="myrealm"/>
+             </KeyStore>
             </Key>
         </Keys>
         <IDP entityID="idp"
@@ -19,15 +20,15 @@
                                  validateResponseSignature="true"
                                  validateAssertionSignature="false"
                                  requestBinding="POST"
-                                 bindingUrl="https://keycloak-saml-client.apps-crc.testing/realms/myrealm/protocol/saml"/>
+                                 bindingUrl="https://keycloak-saml-elytron-1311.apps-crc.testing/realms/myrealm/protocol/saml"/>
             <SingleLogoutService signRequest="true"
                                  signResponse="true"
                                  validateRequestSignature="true"
                                  validateResponseSignature="true"
                                  requestBinding="POST"
                                  responseBinding="POST"
-                                 postBindingUrl="https://keycloak-saml-client.apps-crc.testing/realms/myrealm/protocol/saml"
-                                 redirectBindingUrl="https://keycloak-saml-client.apps-crc.testing/realms/myrealm/protocol/saml"/>
+                                 postBindingUrl="https://keycloak-saml-elytron-1311.apps-crc.testing/realms/myrealm/protocol/saml"
+                                 redirectBindingUrl="https://keycloak-saml-elytron-1311.apps-crc.testing/realms/myrealm/protocol/saml"/>
         </IDP>
     </SP>
-</secure-deployment>
+</keycloak-saml-adapter>
