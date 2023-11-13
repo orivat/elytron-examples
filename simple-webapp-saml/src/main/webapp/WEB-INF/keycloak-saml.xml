@@ -2,16 +2,13 @@
     <SP entityID="simple-webapp-saml"
         sslPolicy="EXTERNAL"
         logoutPage="/simple-webapp-saml">
-        <Keys>
-            <Key signing="true">
-		<KeyStore password="password" file="/etc/keycloak-saml-secret-volume/keystore.jks">
-                  <PrivateKey alias="simple-webapp-saml" password="password"/>
-                <CertificatePem>
-                    MIICszCCAZsCBgGLyPQY0TANBgkqhkiG9w0BAQsFADAdMRswGQYDVQQDDBJzaW1wbGUtd2ViYXBwLXNhbWwwHhcNMjMxMTEzMTM1MDIyWhcNMzMxMTEzMTM1MjAyWjAdMRswGQYDVQQDDBJzaW1wbGUtd2ViYXBwLXNhbWwwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDai3jxEPXKyAm/WJ+SJwy8okdVobYpX9jY17rEYJVBL5MX4cSuCSfRBz5d1UrPVTJ6/3g9a4RUhq7rWNBwFGeBEvl2iZYjGidKT/NLnl4zdhAZGDkTqoneqZFeIDIs06XleXHWQv7pH4wrICh8oEpUQEUMx/4dmj2XCznfRo+RltmkhXuhrAKENzNWnAYDXSAKlvddFPQojHbs3ZcDxMfzTkS7w0C6FeHvAidssp3bGuxg02+cuLQU6CvS5VBIzry735S933EOvv/fqRwmCjRTLkI23zkiSJgIm0aLK4AJbZeSmPGS9mIDRDkPZup9ViV5RC1dJWgMtu2TyEHgSK1pAgMBAAEwDQYJKoZIhvcNAQELBQADggEBAHqI0DEwjNRNqRPUmP4IDtIUWpKus4wi59jbIIJtiBQIRNru7A7yloMNBH0p/GpnPO7pslojUqy6JnhdXAnmkSq2n3z2JCOqGUno7uoi09pN4Rra2pXlC+8hZPSWQg/bE9VMBUe64t027QFaicsXb6xU0gpItp/lepqwmIZbZq+S7tdVsBjO7USpkHjK3JUxCEzEKzqWjwScEZO3CxWaoAROkXQ0jSMDEahn6KUGV9RDLgmWkqxLQCQO5HcWU465EHQL+VdLrSb2PEJTQDKNmdCqg+dbdR/OYm+liIdafkl/keyrcrFD6HtiorKIo61enFAwJLEEbrwmxiPppgQxskk=
-	    </CertificEatePem>
-	      <Certificate alias="myrealm"/>
-             </KeyStore>
-            </Key>
+	<Keys>
+          <Key signing="true">
+        <KeyStore password="password" file="/etc/keycloak-saml-secret-volume/keystore.jks">
+            <PrivateKey alias="simple-webapp-saml" password="password"/>
+            <Certificate alias="myrealm"/>
+        </KeyStore>
+    </Key>
         </Keys>
         <IDP entityID="idp"
              signatureAlgorithm="RSA_SHA256"
